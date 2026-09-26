@@ -11,7 +11,7 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::all();
 
-        return view('index', compact('produtos'));
+        return view('produtos.index', compact('produtos'));
     }
 
     public function store(Request $request)

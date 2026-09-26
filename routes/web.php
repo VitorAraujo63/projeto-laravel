@@ -11,5 +11,5 @@ Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.ind
 
 Route::post('/produtos/criar', [ProdutoController::class, 'store'])->name('produtos.create');
 Route::get('/produtos/criar', function () {
-    return view('criar');
+    return view('produtos.criar');
 })->name('produtos.store');
