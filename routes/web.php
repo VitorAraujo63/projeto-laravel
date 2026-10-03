@@ -13,3 +13,6 @@ Route::post('/produtos/criar', [ProdutoController::class, 'store'])->name('produ
 Route::get('/produtos/criar', function () {
     return view('produtos.criar');
 })->name('produtos.store');
+
+Route::get("/produtos/{id}/editar", [ProdutoController::class, 'edit'])->name('produtos.edit');
+Route::put("/produtos/{id}", [ProdutoController::class, 'update'])->name('produtos.update');
