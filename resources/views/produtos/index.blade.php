@@ -15,6 +15,12 @@
         </a>
     </div>
 
+    @if (session('sucesso'))
+        <div class="alert alert-success">
+            {{ session('sucesso') }}
+        </div>
+    @endif
+
     @if (count($produtos) === 0)
         <div class="alert alert-info">Nenhum produto cadastrado ainda.</div>
     @else
@@ -25,6 +31,7 @@
                         <th>#</th>
                         <th>Nome</th>
                         <th>Preço</th>
+                        <th class="text-end">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +40,14 @@
                             <td class="text-muted">{{ $produto->id }}</td>
                             <td>{{ $produto->nome }}</td>
                             <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
+                            <td class="text-end">
+                                <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-warning">Editar</a>
+                                <form action="{{ route('produtos.destroy', $produto->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir o produto?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

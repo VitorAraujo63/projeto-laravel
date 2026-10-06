@@ -23,8 +23,9 @@
                 </div>
             @endif
 
-            <form action="{{ route('produtos.create') }}">
+            <form action="{{ route('produtos.create') }}" method="post">
                 @csrf
+                @method("POST")
 
                 <div class="form-group">
                     <label for="nome">Nome</label>
